@@ -10,9 +10,9 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="MIT license"></a>
 </p>
 
-> 📍 **This branch, `v1.0`, is the brainlife.io App Combine classified white matter tracts** ([doi:10.25663/brainlife.app.711](https://doi.org/10.25663/brainlife.app.711)).
+> **This branch, `v1.0`, is the brainlife.io App Combine classified white matter tracts** ([doi:10.25663/brainlife.app.711](https://doi.org/10.25663/brainlife.app.711)).
 
-## 🧠 At a glance
+## At a glance
 
 <!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
@@ -22,20 +22,20 @@ Extracts each classified tract from the tractogram with connectome2tck, concaten
 
 | | |
 |---|---|
-| 📥 **Inputs** | `neuro/wmc` · `neuro/track/tck` |
-| 📤 **Outputs** | `neuro/track/tck` · `neuro/wmc` · `raw` |
-| 🐳 **Container** | `brainlife/pyafq:1.0` |
-| ⚙️ **Resources** | 1 CPUs · 20 GB memory · 0.5 h walltime |
-| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.711](https://doi.org/10.25663/brainlife.app.711) |
+| **Inputs** | `neuro/wmc` · `neuro/track/tck` |
+| **Outputs** | `neuro/track/tck` · `neuro/wmc` · `raw` |
+| **Container** | `brainlife/pyafq:1.0` |
+| **Resources** | 1 CPUs · 20 GB memory · 0.5 h walltime |
+| **Run it** | [doi.org/10.25663/brainlife.app.711](https://doi.org/10.25663/brainlife.app.711) |
 
-#### 📥 Inputs
+#### Inputs
 
 | Input | Datatype | Required | Description |
 |---|---|---|---|
 | `wmc` | `neuro/wmc` | yes | White matter classification (classification.mat) of the tractogram. |
 | `track` | `neuro/track/tck` | yes | Tractogram (.tck) indexed by the classification. |
 
-#### 📤 Outputs
+#### Outputs
 
 | Output | Datatype | Description |
 |---|---|---|
@@ -44,7 +44,7 @@ Extracts each classified tract from the tractogram with connectome2tck, concaten
 | `raw` | `raw` | Per-tract intermediate .tck files and assignment lists. |
 
 <details>
-<summary><b>⚙️ Parameters</b> (2)</summary>
+<summary><b>Parameters</b> (2)</summary>
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
@@ -55,9 +55,9 @@ Extracts each classified tract from the tractogram with connectome2tck, concaten
 
 <!-- brainlife-app:end -->
 
-## 🚀 Running the App
+## Running the App
 
-### ☁️ On brainlife.io
+### On brainlife.io
 
 Open the App at [doi.org/10.25663/brainlife.app.711](https://doi.org/10.25663/brainlife.app.711), choose a white matter classification (`neuro/wmc`) and the tractogram it indexes (`neuro/track/tck`), set `combineIndices` and `mergeNames`, and press **Execute**. The App writes a merged tractogram, a new classification and the intermediate files to your project, all tagged `merged`.
 
@@ -66,13 +66,13 @@ Use it to combine, for example, the left and right parts of a tract, or several 
 - **`combineIndices`**: the index numbers of the tracts in `classification.mat` that you want to combine, separated by spaces. For example, `1 2` combines the first two tracts. To create several combined tracts at once, put each set on its own line.
 - **`mergeNames`**: the names of the new combined tracts, one per set in `combineIndices`, separated by spaces.
 
-### 🔬 How it works
+### How it works
 
 1. The tract names and streamline assignments are read from the classification (Python).
 2. Each classified tract is extracted from the tractogram with MRtrix3 `connectome2tck`, and the tracts listed on each line of `combineIndices` are concatenated with `tckedit`.
 3. A new classification structure, named by `mergeNames`, is built for the merged tractogram (compiled MATLAB).
 
-### 💻 Locally
+### Locally
 
 You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqlang.github.io/jq/).
 
@@ -96,7 +96,7 @@ You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqla
 
 The App uses the `brainlife/pyafq:1.0`, `brainlife/mrtrix3:3.0.0` and `brainlife/mcr:neurodebian1604-r2017a` containers.
 
-## 📦 Outputs
+## Outputs
 
 ```text
 track/
@@ -108,11 +108,11 @@ wmc/
 raw/                   per-tract intermediate .tck files and assignment lists
 ```
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
 - **`combination failed. see logs and derivatives`**: the new classification was not produced. Check that `combineIndices` refers to tract indices present in the classification, and that `mergeNames` has one name per line of `combineIndices`.
 
-## 📚 Citing
+## Citing
 
 > [!TIP]
 > If you use this App in your work, please cite the App, the software it builds on and brainlife.io (below). GitHub's **Cite this repository** button gives the App citation in APA and BibTeX.
@@ -123,14 +123,14 @@ raw/                   per-tract intermediate .tck files and assignment lists
 - Hayashi S, Caron BA, Heinsfeld AS, et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. *Nature Methods* 21:809–813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
 - Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. *Scientific Data* 6:69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
 
-## 👥 Authors
+## Authors
 
 - Brad Caron
 - Franco Pestilli (project director)
 
 **Contributors:** Soichi Hayashi
 
-## 💰 Funding
+## Funding
 
 [![Wellcome-226486/Z/22/Z](https://img.shields.io/badge/Wellcome-226486%2FZ%2F22%2FZ-purple.svg)](https://wellcome.org/)
 [![NIH-NINDS-U24NS140384](https://img.shields.io/badge/NIH_NINDS-U24NS140384-green.svg)](https://reporter.nih.gov/project-details/11261037)
@@ -149,6 +149,6 @@ raw/                   per-tract intermediate .tck files and assignment lists
 
 <sub>brainlife.io is publicly funded, and acknowledging that support helps keep it running. This App was developed with support from Wellcome, the U.S. National Institutes of Health (including the BRAIN Initiative BRAIN CONNECTS program: The Axonal Projectome EXchange, U24NS140384, and the Center for Mesoscale Connectomics, UM1NS132207) and the U.S. National Science Foundation.</sub>
 
-## ⚖️ License
+## License
 
 [MIT](LICENSE). MRtrix3 is distributed under the [Mozilla Public License 2.0](https://www.mrtrix.org/).
